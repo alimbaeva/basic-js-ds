@@ -79,7 +79,7 @@ class BinarySearchTree {
     if (!this.head) {
       return false
     } else {
-      this.searchHas(this.head, data);
+      return this.searchHas(this.head, data);
     }
     // let result = this.searchHas(this.head, data);
     // return result;
@@ -103,7 +103,7 @@ class BinarySearchTree {
     }
   }
 
-  finde(data) {
+  find(data) {
     if (!this.head) {
       return this.head
     } else {
@@ -129,6 +129,7 @@ class BinarySearchTree {
   }
   remove(data) {
     this.head = this.removeNode(this.head, data);
+    // return data
   }
   removeNode(node, data) {
     if (!node) { return null };
@@ -155,6 +156,7 @@ class BinarySearchTree {
       }
       node.data = minRight.data;
       node.right = this.removeNode(node.right, minRight.data);
+      console.log(node.data)
       return node
     }
   }
