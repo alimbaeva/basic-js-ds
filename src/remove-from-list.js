@@ -1,6 +1,6 @@
 const { NotImplementedError } = require('../extensions/index.js');
 
-// const { ListNode } = require('../extensions/list-node.js');
+const { ListNode } = require('../extensions/list-node.js');
 
 /**
  * ===================================================================================
@@ -35,31 +35,23 @@ const { NotImplementedError } = require('../extensions/index.js');
  * }
  */
 
-// class ListNode {
-//   constructor(x) {
-//     this.value = x;
-//     this.next = null;
-//   }
-// }
-let ListValue = {};
-function removeKFromList(l, k) {
-  if (l.value === k) {
-    if (l.next) {
-      l.value = l.next.value;
-      l.next = l.next.next;
-      removeKFromList(l, k)
+function removeKFromList(list, k) {
+  const node = new ListNode(0);
+  node.next = list;
+
+  let current = node;
+
+  while (current.next !== null) {
+    if (current.next.value === k) {
+      current.next = current.next.next;
+    } else {
+      current = current.next;
     }
-    ListValue.next = null;
   }
 
-  ListValue = l;
-  if (l.next) {
-    removeKFromList(l.next, k)
-  };
-
-
-  return l;
+  return node.next;
 }
+
 
 module.exports = {
   removeKFromList
